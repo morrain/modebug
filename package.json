@@ -1,0 +1,24 @@
+{
+  "name": "modebug",
+  "version": "1.0.0",
+  "description": "tiny debug utility",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morrain/modebug.git"
+  },
+  "keywords": [
+    "debug",
+    "log",
+    "debugger"
+  ],
+  "author": "morrain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morrain/modebug/issues"
+  },
+  "homepage": "https://github.com/morrain/modebug#readme"
+}
