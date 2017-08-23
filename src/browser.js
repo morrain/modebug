@@ -4,16 +4,15 @@
  * Expose `debug()` as the module.
  */
 
+/*global chrome */
+
 exports = module.exports = require('./debug');
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
 exports.load = load;
 exports.useColors = useColors;
-exports.storage = 'undefined' != typeof chrome
-               && 'undefined' != typeof chrome.storage
-                  ? chrome.storage.local
-                  : localstorage();
+exports.storage = 'undefined' !== typeof chrome && 'undefined' !== typeof chrome.storage ? chrome.storage.local : localstorage();
 
 /**
  * Colors.
@@ -83,17 +82,17 @@ exports.formatters.j = function(v) {
 function formatArgs(args) {
   var useColors = this.useColors;
 
-  args[0] = (useColors ? '%c' : '')
-    + this.namespace
-    + (useColors ? ' %c' : ' ')
-    + args[0]
-    + (useColors ? '%c ' : ' ')
-    + '+' + exports.humanize(this.diff);
+  args[0] = (useColors ? '%c' : '') + 
+  	this.namespace + (useColors ? ' %c' : ' ') + 
+  	args[0] + 
+  	(useColors ? '%c ' : ' ') + 
+  	'+' + 
+  	exports.humanize(this.diff);
 
-  if (!useColors) return;
+  if (!useColors) {return;}
 
   var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit')
+  args.splice(1, 0, c, 'color: inherit');
 
   // the final "%c" is somewhat tricky, because there could be other
   // arguments passed either before or after the %c, so we need to
@@ -101,7 +100,7 @@ function formatArgs(args) {
   var index = 0;
   var lastC = 0;
   args[0].replace(/%[a-zA-Z%]/g, function(match) {
-    if ('%%' === match) return;
+    if ('%%' === match) {return;}
     index++;
     if ('%c' === match) {
       // we only are interested in the *last* %c
@@ -123,9 +122,8 @@ function formatArgs(args) {
 function log() {
   // this hackery is required for IE8/9, where
   // the `console.log` function doesn't have 'apply'
-  return 'object' === typeof console
-    && console.log
-    && Function.prototype.apply.call(console.log, console, arguments);
+  return 'object' === typeof console && console.log && 
+  		Function.prototype.apply.call(console.log, console, arguments);
 }
 
 /**
@@ -137,7 +135,7 @@ function log() {
 
 function save(namespaces) {
   try {
-    if (null == namespaces) {
+    if (null === namespaces) {
       exports.storage.removeItem('debug');
     } else {
       exports.storage.debug = namespaces;

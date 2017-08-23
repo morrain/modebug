@@ -65,7 +65,7 @@ function createDebug(namespace) {
 
   function debug() {
     // disabled?
-    if (!debug.enabled) return;
+    if (!debug.enabled) {return;}
 
     var self = debug;
 
@@ -94,7 +94,7 @@ function createDebug(namespace) {
     var index = 0;
     args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
       // if we encounter an escaped % then don't increase the array index
-      if (match === '%%') return match;
+      if (match === '%%') {return match;}
       index++;
       var formatter = exports.formatters[format];
       if ('function' === typeof formatter) {
@@ -160,7 +160,7 @@ function enable(namespaces) {
   var len = split.length;
 
   for (i = 0; i < len; i++) {
-    if (!split[i]) continue; // ignore empty strings
+    if (!split[i]){ continue;} // ignore empty strings
     namespaces = split[i].replace(/\*/g, '.*?');
     if (namespaces[0] === '-') {
       exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
@@ -220,6 +220,6 @@ function enabled(name) {
  */
 
 function coerce(val) {
-  if (val instanceof Error) return val.stack || val.message;
+  if (val instanceof Error) {return val.stack || val.message;}
   return val;
 }

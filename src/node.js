@@ -53,14 +53,14 @@ exports.inspectOpts = Object.keys(process.env).filter(function (key) {
   var prop = key
     .substring(6)
     .toLowerCase()
-    .replace(/_([a-z])/g, function (_, k) { return k.toUpperCase() });
+    .replace(/_([a-z])/g, function (_, k) { return k.toUpperCase(); });
 
   // coerce string value into JS value
   var val = process.env[key];
-  if (/^(yes|on|true|enabled)$/i.test(val)) val = true;
-  else if (/^(no|off|false|disabled)$/i.test(val)) val = false;
-  else if (val === 'null') val = null;
-  else val = Number(val);
+  if (/^(yes|on|true|enabled)$/i.test(val)) {val = true;}
+  else if (/^(no|off|false|disabled)$/i.test(val)) {val = false;}
+  else if (val === 'null'){ val = null;}
+  else { val = Number(val);}
 
   obj[prop] = val;
   return obj;
@@ -71,8 +71,7 @@ exports.inspectOpts = Object.keys(process.env).filter(function (key) {
  */
 
 function useColors() {
-  return 'colors' in exports.inspectOpts
-    ? Boolean(exports.inspectOpts.colors)
+  return 'colors' in exports.inspectOpts ? Boolean(exports.inspectOpts.colors)
     : tty.isatty(process.stderr.fd);
 }
 
@@ -113,8 +112,7 @@ function formatArgs(args) {
     args[0] = prefix + args[0].split('\n').join('\n' + prefix);
     args.push(colorCode + 'm+' + exports.humanize(this.diff) + '\u001b[0m');
   } else {
-    args[0] = new Date().toISOString()
-      + ' ' + name + ' ' + args[0];
+    args[0] = new Date().toISOString() + ' ' + name + ' ' + args[0];
   }
 }
 
@@ -134,7 +132,7 @@ function log() {
  */
 
 function save(namespaces) {
-  if (null == namespaces) {
+  if (null === namespaces) {
     // If you set a process.env field to null or undefined, it gets cast to the
     // string 'null' or 'undefined'. Just delete instead.
     delete process.env.DEBUG;
