@@ -1,5 +1,5 @@
 /*
- * <%= pkg.title %> v<%= pkg.version %>
+ * <%= pkg.name %> v<%= pkg.version %>
  * <%= pkg.description %>
  * Copyright: 2017-<%= currentYear %> <%= pkg.author %>
  * Homepage: <%= pkg.homepage %>

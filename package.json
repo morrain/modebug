@@ -1,8 +1,10 @@
 {
   "name": "modebug",
-  "version": "1.0.3",
+  "title": "debug",
+  "version": "1.0.4",
   "description": "tiny debug utility",
   "main": "index.js",
+  "browser":"./src/browser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
