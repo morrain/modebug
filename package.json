@@ -1,6 +1,6 @@
 {
   "name": "modebug",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "tiny debug utility",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
+    "supports-color": "^4.2.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
